@@ -1,0 +1,16 @@
+{
+  "name": "shopifymultipass",
+  "version": "1.0.0",
+  "description": "Shopify Multipass Login URL from using the shopify store credential",
+  "main": "shopifymultipassconnector.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jitender Agarwal",
+  "license": "ISC",
+  "dependencies": {
+    "json-query": "^2.2.2",
+    "multipassify": "^1.1.0",
+    "url": "^0.11.0"
+  }
+}
