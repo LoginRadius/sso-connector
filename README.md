@@ -1,58 +1,75 @@
 # Introduction 
 
-Welcome to the open-source LoginRadius SSO project. Please review this README file to understand how you can assist in contributing to the exsiting SSO connectors and build new SSO connectors.
+Welcome to the open-source LoginRadius SSO project. Please review this README file to understand how you can assist in contributing to the existing SSO connectors OR build new SSO connectors.
 
-There are some applications that do not support industry-standard federated SSO methods like  SAML, Oauth/OIDC, JWT, WS Federation, etc. and provide their own mechanism e.g. Shopify Multipass Login to create a Single Sign-On workflow for identity provider applications. SSO Connector solutions creates a Single Sign-on user experience between your applications and these applications by leveraging these mechanisms.
+There are some applications that do not support industry-standard federated SSO methods like  SAML, Oauth/OIDC, JWT, WS Federation, etc., and provide their own mechanism e.g. Shopify Multipass Login to create a Single Sign-On workflow for identity provider applications. SSO Connector solutions create a Single Sign-on user experience between your applications and these applications by leveraging these mechanisms.
 
 # Getting Started
 
 ## Shopify Multipass SSO connector
 
-You can leverage this project to create a Shopify Multipass Login URL using the Shopify Mulitpass Credentials and consumer profile from your application. The Shopify Multipass Login URL seamlessly logs the consumer in with the same email address the consumer used to sign up on the your  web application. If no account with that email address exists in the Shopify Store, one is created in the Shopify Store.
+You can leverage this project to create a Shopify Multipass Login URL using the Shopify Multipass Credentials and consumer profile from your application. The Shopify Multipass Login URL seamlessly logs the consumer in with the same email address the consumer used to signup on the your  web application. If no account with that email address exists in the Shopify Store, one is created in the Shopify Store.
 
-## Installation
+## Shopify Folder Structure
 
-1. Clone the repo to your desired location
-2. Add your LoginRadiusV2.js and IDX options e.g. API Key and Secret in `static/idx-options.js`. 
+There are two subfolders LRShopifyMultipass-nodejs and ShopifyMultipassDemo in the Shopify Folder. 
+- LRShopifyMultipass-nodejs: The LRShopifyMultipass-nodejs contains a demo for SSO workflow between LoginRadius and Shopify application using the SSO connector code. 
+- ShopifyMultipassDemo-nodejs: The ShopifyMultipassDemo-nodejs contains a demo for how to create a SSO conenctor using the profile data and Shopify multipass credential.  
 
-3. In the repo's parent folder run `npm install` this will install any packages necessary for the project.
+## LRShopifyMultipass-nodejs
 
-4. Once everything is installed type `npm run start` to get webpack to start serving the JavaScript.
-
-5. Visit `http://localhost:8080/`
-
-## Development
-
-All of the code is in the `src` folder, the main code logic is in `main.js` and the styling that depends on JavaScript is located in `styles.js`.
-
-## Build and Test
-
-Once you're ready to do a release of the identity experience framework, follow the steps below:
-
-`npm run build`
-
-This will build a javascript file in the `build` folder that you can grab and use for the release.
+### Prerequisite
+1. **LoginRadius Account:** If you don't have a LoginRadius account, you can create a free account at `https://www.loginradius.com/pricing/`.
+2. **Shopify Plus Account:** Please see `https://shopify.dev/docs/admin-api/rest/reference/plus/multipass` for how to get Multipass Credential.
 
 
-## Build Process
+### Installation
+1. Clone the LRShopifyMultipass-nodejs folder to your desired location
+2. Add your LoginRadius API Key, App Name, and SOTT value in `demo/assets/js/options.js`. 
+3. Add your LoginRadius API Key, App Name, and APP secret in `server.js`.
 
-The build process is as follows; There are 2 webpack configuration files each one of them has a different build process based on your requirements, in package.json if you look at the `"scripts"` field you will see what they represent.
+Please see the LoginRadius [API key and Secret](https://www.loginradius.com/docs/api/v2/admin-console/platform-security/api-key-and-secret/#api-key-and-secret) and [SOTT](https://www.loginradius.com/docs/api/v2/customer-identity-api/sott-usage/#sott-secured-one-time-token-) documents for how to get these values for your LoginRadius Account.
 
-1. webpack.dev.config.js: configuration is used when running `npm run start` it deploys all of the assets in a convenient way that the IDX Framework can be tested and developed using hot reload.
+4. Add your Shopify store details under **storeConfig** variable in `src/shopifyMultipass.js`.
+5. Add your data mapping object under **dataMap** variable in `src/shopifyMultipass.js`. These data points will be synced from LoginRadius to Shopify store. 
+6. In the repo's parent folder run `npm install` this will install any packages necessary for the project.
 
-2. webpack.prod.config.js: triggered when `npm run build` is run, it creates a "build" folder with only the necessary assets to deploy to production, webpack.prod.config.js contains 2 different configuration objects, the first one is to generate the main file `idx-selfhosted.x.x.x.js` which is an unminified version of the IDX Framework. The second config object is used to provide a minified version of the framework's JavaScript named `idx-selfhosted.1.3.0.min.js`.
+7. Once everything is installed type `node server.js`.
 
-*Note:* Webpack requires an entry point into your code in order to bunde the code, in the `src` folder where most of the code is located, the `index.js` is the entry point for the production configs, `webpack.prod.config.js` while for development we need to load different JavaScript code and as such the entry point for `webpack.dev.config.js` is the `index-dev.js` file.
+## Test
+
+- Open `http://localhost:3000/demo` in your browser
+- Create a LoginRadius user account using the registration form on the demo
+- Login into the demo and navigate to **Shopify Store** on the profile page.
+- Click **Redirect to Shopify Store** button and it will log you in the Shopify store.
+
+## ShopifyMultipassDemo-nodejs
+
+### Prerequisite
+1. **Shopify Plus Account:** Please see `https://shopify.dev/docs/admin-api/rest/reference/plus/multipass` for how to get Multipass Credential.
+
+
+### Installation
+1. Clone the ShopifyMultipassDemo-nodejs folder to your desired location.
+2. Add your Shopify store details under **storeConfig** variable in `src/shopifyMultipassconnector.js`.
+3. Add your data mapping object under **dataMap** variable in `src/shopifyMultipass.js`. These data points will be synced from LoginRadius to Shopify store. 
+4. Add profile data object under **userProfile** variable in `src/shopifyMultipass.js`. 
+6. In the repo's parent folder run `npm install` this will install any packages necessary for the project.
+
+## Test
+-  Run `node server.js` in the project root folder
+- It will print the Shopify Login URL  
+- Copy the Shopify Login URL and open it in the browser and it will log you in the Shopify store.
 
 ## Open Source Contributions
 
-We welcome open source contributions, please see make sure you read the steps below before making any pull request.
-
-1. Make sure that the code can build via `npm run build`.
-
-2. Do not include the built files (the output of `npm run build`), the LoginRadius team will handle building the files and setting the version when the next release is scheduled.
-
-3. It's important to note that by making a pull request, you are agreeing to make the code changes available under the MIT license for others to use freely.
+We welcome open source contributions and  It's important to note that by making a pull request, you are agreeing to make the code changes available under the MIT license for others to use freely. You can contribute the SSO Connector project in the follwogin ways: 
+- Create SSO Connector for other applications. Here are some suggestions:
+    1. Bigcommerce
+    2. PerfectMind
+    3. 
+- Create Shopify connector in other programming languages like .net, php, etc.
+- Suggest improvement in the current Shopify SSO connector code
 
 ## License
 
