@@ -1,9 +1,9 @@
 /*  Config variable  */
 var config = {
   apiDomain: 'api.loginradius.com',
-  apiKey: 'ba94edea-a81a-4880-955f-be5c6e4855c6',
-  apiSecret: '6cdfb6f9-048a-437a-ba6e-06d2c0958af9',
-  siteName: 'internal-jitender-van',
+  apiKey: '<LR API KEY>',
+  apiSecret: '<LR API SECRET>',
+  siteName: '<LR APP NAME>',
   serverRegion: '',
   apiRequestSigning: false,
   proxy: {

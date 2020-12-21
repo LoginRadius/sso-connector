@@ -1,11 +1,11 @@
 var stringVariable = window.location.href;
 var domainName = stringVariable.substring(0, stringVariable.lastIndexOf('/'));
 var commonOptions = {};
-commonOptions.apiKey = 'ba94edea-a81a-4880-955f-be5c6e4855c6';
-commonOptions.appName = 'internal-jitender-van';
+commonOptions.apiKey = '<LR API KEY>';
+commonOptions.appName = '<LR APP NAME>';
 commonOptions.hashTemplate = true;
 commonOptions.sott = '<SOTT>';
 commonOptions.formValidationMessage = true;
-commonOptions.verificationUrl = domainName + '/loginscreen.html';
-commonOptions.resetPasswordUrl = domainName + '/loginscreen.html';
+commonOptions.verificationUrl = domainName + '/index.html';
+commonOptions.resetPasswordUrl = domainName + '/index.html';
 var LRObject = new LoginRadiusV2(commonOptions);

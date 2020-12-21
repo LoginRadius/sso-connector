@@ -4,11 +4,11 @@ var Multipassify = require('multipassify');
 
 //Shopify Store Config Object
 var storeConfig = {
-    StoreName: 'internal-jitender',
-    StoreUrl: 'https://internal-jitender.myshopify.com',
-    StoreLoginUrl: 'https://internal-jitender.myshopify.com/account/login/',
-    AccessToken: '35d5451702461c818749e7298497b9c8',
-    MultipassSecret: '90578f080632d147363677499a22da99'
+    StoreName: '<Shopify Store Name>',
+    StoreUrl: '<Shopify Store URL>',
+    StoreLoginUrl: '<Shopify Store Login URL>',
+    AccessToken: '<Shopify Multipass Token>',
+    MultipassSecret: '<Shopify Multipass Secret>'
 }
 
 //Enter here your user profile object which might have different sturture than the example here.

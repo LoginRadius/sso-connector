@@ -4,25 +4,17 @@ var jsonQuery = require("json-query");
 var url = require("url");
 
 var storeConfig = {
-    StoreName : 'internal-jitender',    
-    StoreUrl : 'https://internal-jitender.myshopify.com',
-    StoreLoginUrl : 'https://internal-jitender.myshopify.com/account/login/',
-    AccessToken : '35d5451702461c818749e7298497b9c8',
-    MultipassSecret :'90578f080632d147363677499a22da99' 
+    StoreName : '<Shopify Store Name>',    
+    StoreUrl : '<Shopify Store URL>',
+    StoreLoginUrl : '<Shopify Store Login URL>',
+    AccessToken : '<Shopify Multipass Token>',
+    MultipassSecret :'<Shopify Multipass Secret>' 
 }
 
 var dataMap = {
     email: "Email[0].Value",
     first_name: "FirstName",
-    last_name: "LastName"    /*,
-    addresses: [{
-      address1: "Addresses[0].Address1",
-      address2: "Addresses[0].Address2",
-      country: "Addresses[0].Country",
-      city: "Addresses[0].City",
-      zip: "Addresses[0].Country.PostalCode",
-      province: "Addresses[0].Country.State"
-    }]*/
+    last_name: "LastName"  
   }
 
 function getPayload( dataMap, userProfile, ipAddress = null) {
