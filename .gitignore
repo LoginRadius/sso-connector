@@ -16,8 +16,6 @@ prepros.cfg
 .DS_Store
 .idea/
 
-Shopify/LRShopifyMultipass-nodejs/demo/node_modules
-Shopify/ShopifyMultipassDemo-nodejs/demo/node_modules
 /node_modules
 node_modules
 demo/node_modules

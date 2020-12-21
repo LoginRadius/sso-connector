@@ -1,9 +1,9 @@
 # Introduction 
 The LRShopifyMultipass-nodejs contains a demo for SSO workflow between LoginRadius and Shopify application using the SSO connector code. It leverages the LoginRadius NodeJs SDK library to call LoginRadius authentication APIs. 
 
-Please see the LoginRadius [NodeJs SDK Demo](https://github.com/LoginRadius/node-js-sdk) for complete LoginRadius Nodejs Authentication demo.
+Please see the LoginRadius [NodeJs SDK Demo](https://github.com/LoginRadius/node-js-sdk) for the complete LoginRadius Nodejs Authentication demo.
 
-Please visit [here](http://www.loginradius.com/) for more information on LoginRadius platform.
+Please visit [here](http://www.loginradius.com/) for more information on the LoginRadius platform.
 
 ### Prerequisite
 1. **LoginRadius Account:** If you don't have a LoginRadius account, you can create a free account at `https://www.loginradius.com/pricing/`.
@@ -35,7 +35,7 @@ Pass the proxy configurations if you want to set Http Server Proxy Configuration
 
 4. Add your Shopify store details under **storeConfig** variable in `src/shopifyMultipass.js`.
 5. Add your data mapping object under **dataMap** variable in `src/shopifyMultipass.js`. These data points will be synced from LoginRadius to Shopify store. 
-6. In the repo's parent folder run `npm install` this will install any packages necessary for the project.
+6. In the repo's parent folder run `npm install` and this will install any packages necessary for the project.
 7. Once everything is installed type `node server.js`.
 
 ## Test
@@ -43,7 +43,7 @@ Pass the proxy configurations if you want to set Http Server Proxy Configuration
 - Open `http://localhost:3000/demo` in your browser
 - Create a LoginRadius user account using the registration form on the demo
 - Login into the demo and navigate to **Shopify Store** on the profile page.
-- Click **Redirect to Shopify Store** button and it will log you in the Shopify store.
+- Click the **Redirect to Shopify Store** button and it will log you in to the Shopify store.
 
 ### LoginRadius APIs called used in this Demo
 * PUT : [Auth Update Profile by Token](#UpdateProfileByAccessToken-put-)<br>
@@ -145,7 +145,7 @@ lrv2.authenticationApi.resetPasswordByResetToken(resetPasswordByResetTokenModel)
   
  
 <h6 id="ChangePassword-put-"> Auth Change Password (PUT)</h6>
- This API is used to change the accounts password based on the previous password  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/authentication/auth-change-password)
+ This API is used to change the account's password based on the previous password  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/authentication/auth-change-password)
 
  
  
@@ -198,7 +198,7 @@ lrv2.authenticationApi.loginByEmail(emailAuthenticationModel, emailTemplate, fie
   
  
 <h6 id="ForgotPassword-post-"> Auth Forgot Password (POST)</h6>
- This API is used to send the reset password url to a specified account. Note: If you have the UserName workflow enabled, you may replace the 'email' parameter with 'username'  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/authentication/auth-forgot-password)
+ This API is used to send the reset password URL to a specified account. Note: If you have the UserName workflow enabled, you may replace the 'email' parameter with 'username'  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/authentication/auth-forgot-password)
 
  
  

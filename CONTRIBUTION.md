@@ -14,6 +14,7 @@ This is a rough outline of what a contributor's workflow looks like:
 
 - Create a separate branch from `dev` branch to base your work.
 - Create a new folder for new Connector or existing SSO Connector in a different programming language
+- If you are creating a new Connector, please add README file in the folder explaining about the Connector
 - Make commits of logical units.
 - Make sure your commit messages are in the proper format (see below).
 - Submit a pull request to the original repository.
