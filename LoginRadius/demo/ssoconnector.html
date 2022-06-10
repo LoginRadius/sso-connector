@@ -6,7 +6,7 @@
         <link href="assets/css/style.css" rel="stylesheet" />
         <script src="assets/js/jquery.min.js"></script> 
         <script src="assets/js/logout.js"></script> 
-        <script src="assets/js/shopify.js"></script>  
+        <script src="assets/js/ssoconnector.js"></script>  
     </head>
     <body>
         <div class="section-menu">
@@ -23,7 +23,7 @@
                
                 <a href="account.html" id="menu-account">Update Account</a>
                
-                <a href="shopify.html" id="menu-roles">Shopify Store</a>       
+                <a href="ssoconnector.html" id="menu-roles">SSO Connector</a>       
                 <a href="" id="menu-user-logout">Logout</a>
             </div>
         </div>
@@ -43,14 +43,14 @@
             <center>
                 <div class="container-small lr-change-password">
                     <div id="shopify-div">
-                        <div style="color:green; font-weight:bold;" > Ready to Shop, click the button to log into the Shopify Store
+                        <div style="color:green; font-weight:bold;" > Click the button to log into the SSO Connector Store
                         </div>
 
-                        <a id="btn-shopify-multipassurl">Redirect to Shopify Store</a>
-
+                        <button id="btn-shopify-login">Navigate to Shopify Store</button>
+                        <button id="btn-bigcommerce-login">Navigate to BigCommerce Store</button>
                     </div>
 			
-			<span style="color:red" id="shopify-multipassurl-errorMsg"></span>
+			<span style="color:red" id="sso-connector-errorMsg"></span>
 		</div>
             </center>                
         </div>        

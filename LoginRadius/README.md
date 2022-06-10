@@ -1,5 +1,5 @@
 # Introduction 
-The LRShopifyMultipass-nodejs contains a demo for SSO workflow between LoginRadius and Shopify application using the SSO connector code. It leverages the LoginRadius NodeJs SDK library to call LoginRadius authentication APIs. 
+The folder leverages the LoginRadius NodeJs SDK library to call LoginRadius authentication APIs. 
 
 Please see the LoginRadius [NodeJs SDK Demo](https://github.com/LoginRadius/node-js-sdk) for the complete LoginRadius Nodejs Authentication demo.
 

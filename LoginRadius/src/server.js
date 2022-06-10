@@ -21,9 +21,11 @@ var lrv2 = require('loginradius-sdk')(config);
 var bodyParser = require('body-parser');
 var path = require('path');
 var app = express();
+var jsonQuery = require("json-query");
 var PORT = 3000;
-var shopifyMultipass = require("./src/shopifyMultipass");
-app.use('/demo', express.static(path.join(__dirname, '/demo')));
+var shopifyMultipass = require("../../SSOConnector/Shopify/shopifyMultipass");
+var BigCommerceLogin = require("../../SSOConnector/BigCommerce/BigCommerceLogin");
+app.use('/demo', express.static(path.join(__dirname, '../demo')));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -328,17 +330,23 @@ app.post('/ajax_handler/profile', function (req, res) {
       });
     }
   } else if (action === 'generateShopifyMultipassURL') {
-    //console.log(req);
     var token = req.body.token ? req.body.token : '';
     if (token === '') {
       output.message = 'token is required';
     } else {
-      var fields = '*';   
+      var fields = '*';
       lrv2.authenticationApi.getProfileByAccessToken(token, fields).then(function (response) {
         if (response.Uid) {
-         output.data = shopifyMultipass.generateShopifyMultipassURL(response);
-         output.status = 'success';
-         output.message = 'shopifymultipass URL is fetched';
+            // Create your customer data hash
+          var dataMap = {
+            email: "Email[0].Value",
+            first_name: "FirstName",
+            last_name: "LastName"
+          }
+          let userClaim = getPayload(dataMap, response);
+          output.data = shopifyMultipass.generateShopifyMultipassURL(userClaim);
+          output.status = 'success';
+          output.message = 'shopifymultipass URL is fetched';
         } else {
           output.message = 'profile not fetched';
         }
@@ -348,7 +356,32 @@ app.post('/ajax_handler/profile', function (req, res) {
         res.send(output);
       });
     }
-  }else if (action === 'changePassword') {
+  } else if (action === 'generateBigCommerceURL') {
+    var token = req.body.token ? req.body.token : '';
+    if (token === '') {
+      output.message = 'token is required';
+    } else {
+      var fields = '*';
+      lrv2.authenticationApi.getProfileByAccessToken(token, fields).then(function (response) {
+        console.log("response", response)
+
+        if (response.CustomFields && response.CustomFields.customerid) {
+            // get bigcommerce customerid from the LR profile
+          output.data = BigCommerceLogin.generateBigCommerceLoginURL(response.CustomFields.customerid);
+          console.log(output.data);
+          output.status = 'success';
+          output.message = 'generateBigCommerceURL URL is fetched';
+        } else {
+          output.message = 'BigCommerce Id is not found';
+        }
+        res.send(output);
+      }).catch(function (error) {
+        console.log("error", error)
+        output.message = error.Description;
+        res.send(output);
+      });
+    }
+  } else if (action === 'changePassword') {
     var accessToken = req.body.token ? req.body.token : '';
     var oldPassword = req.body.oldpassword ? req.body.oldpassword : '';
     var newPassword = req.body.newpassword ? req.body.newpassword : '';
@@ -593,4 +626,20 @@ app.post('/ajax_handler/profile', function (req, res) {
     });
   }
 });
+
+
+function getPayload(dataMap, userProfile, ipAddress = null) {
+
+  let claim = {};
+  for (var key in dataMap) {
+      claim[key] = jsonQuery(dataMap[key], {
+        data: userProfile
+      }).value;
+  }
+  //claim.remote_ip = ipAddress;
+  claim.return_to = "/account";
+  claim.created_at = new Date();
+  return claim;
+}
+
 app.listen(PORT, () => console.log('Demo app can be accessed at localhost:' + PORT + '/demo'));
