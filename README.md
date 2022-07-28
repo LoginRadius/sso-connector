@@ -18,7 +18,7 @@ There are two subfolders LoginRadius and SSOconnector.
  - **BigCommerce:** You can leverage this project to create a BigCommerce SSO Login URL using the BigCommerce Store Credentials and BigCommerce Customer Id. The BigCommerce JWT Login URL seamlessly logs the consumer in with the BigCommerce Customer Id.
 
 ### Prerequisite
-1. **LoginRadius Account:** If you don't have a LoginRadius account, you can create a free account at the [LoginRadius](https://www.loginradius.com/pricing/) website.
+1. **LoginRadius Account:** If you don't have a LoginRadius account, you can create an account at the [LoginRadius](https://www.loginradius.com/pricing/) website.
 2. **Shopify Plus Account:** Please see the [Shopify Multipass](https://shopify.dev/docs/admin-api/rest/reference/plus/multipass) document for how to get Multipass Credentials.
 
 2. **BigCommerce Account:**  If you don't have a BigCommerce account, you can create a trial account at the [BigCommerce](https://www.bigcommerce.com/start-your-trial/) website.
